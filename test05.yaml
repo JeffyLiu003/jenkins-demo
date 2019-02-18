@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tomcat05
+  namespace: dev
+spec:
+  template:
+    metadata:
+      labels:
+        app: tomcat05
+    spec:
+      containers:
+      - image: swr.ap-southeast-2.myhuaweicloud.com/paas-poc/jenkins-demo:<BUILD_TAG>
+        imagePullPolicy: IfNotPresent
+        name: tomcat05
+        env:
+        - name: branch
+          value: <BRANCH_NAME>
